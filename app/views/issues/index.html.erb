@@ -1,13 +1,9 @@
-<h1>Listing issues</h1>
-
 <table>
   <tr>
     <th>Title</th>
     <th>Description</th>
     <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Actions</th>
   </tr>
 
 <% @issues.each do |issue| %>
@@ -15,13 +11,13 @@
     <td><%= issue.title %></td>
     <td><%= issue.description %></td>
     <td><%= issue.status %></td>
-    <td><%= link_to 'Show', issue %></td>
-    <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
-    <td><%= link_to 'Destroy', issue, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', issue %>
+    | <%= link_to 'Edit', edit_issue_path(issue) %>
+    | <%= link_to 'Destroy', issue, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Issue', new_issue_path %>
+<p><%= link_to 'New Issue', new_issue_path %></p>

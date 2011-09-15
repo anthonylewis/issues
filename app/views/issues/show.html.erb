@@ -1,20 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @issue.title %>
-</p>
+<h2><%= @issue.title %></h2>
 
-<p>
-  <b>Description:</b>
-  <%= @issue.description %>
-</p>
+<table>
+  <tr>
+    <th>Status</th><th>Author</th><th>Assigned To</th>
+  </tr>
+  <tr>
+    <td><%= @issue.status %></td>
+    <td><%= @issue.user.try :email %></td>
+    <td><%= @issue.assignee.try :email %></td>
+  </tr>
+</table>
 
-<p>
-  <b>Status:</b>
-  <%= @issue.status %>
-</p>
+<p><b>Description:</b></p>
 
+<p><%= @issue.description %></p>
 
-<%= link_to 'Edit', edit_issue_path(@issue) %> |
-<%= link_to 'Back', issues_path %>
+<br />
+
+<p><%= link_to 'Edit', edit_issue_path(@issue) %> |
+<%= link_to 'Back', issues_path %></p>
+
+<br />
+
+<h2>Notes</h2>
+
+<% @issue.notes.each do |note| %>
+  <p><%= note.user.try :email %> said:</p>
+  <blockquote><p><%= note.body %></p></blockquote>
+<% end %>
+
+<h3>Add A Note</h3>
+<%= form_for([@issue, @issue.notes.build]) do |f| %>
+  <div class="field">
+    <%= f.label :body, 'Note' %><br />
+    <%= f.text_area :body, :rows => 10 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
