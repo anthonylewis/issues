@@ -1,6 +1,5 @@
 class IssuesController < ApplicationController
-  before_filter :authenticate_user!,
-    :except => [ :show, :index ]
+  authorize_resource
 
   # GET /issues
   # GET /issues.xml
