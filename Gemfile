@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'cancan'
 gem 'will_paginate'
+gem 'meta_search'
 
 # Use unicorn as the web server
 # gem 'unicorn'

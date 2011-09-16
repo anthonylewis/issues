@@ -1,3 +1,10 @@
+<%= form_for @search do |f| %>
+  <p>
+    <%= f.text_field :description_contains %>
+    <%= f.submit 'Search' %>
+  </p>
+<% end %>
+
 <% if can? :create, Issue %>
   <p><%= link_to 'New Issue', new_issue_path %></p>
 <% end %>
